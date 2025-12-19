@@ -76,9 +76,9 @@ function Contact() {
                         <h3 style={{ fontSize: "1.5rem", marginBottom: "1.5rem" }}>Socials</h3>
                         <div style={{ display: "flex", gap: "1.5rem" }}>
                             {[
-                                { icon: <FaGithub />, link: "#", color: "#fff" },
-                                { icon: <FaLinkedin />, link: "#", color: "#0077B5" },
-                                { icon: <FaTwitter />, link: "#", color: "#1DA1F2" }
+                                { icon: <FaGithub />, link: "https://github.com/prob-Code", color: "#fff" },
+                                { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/ojas-satdeve-a424a6289/", color: "#0077B5" },
+                                { icon: <FaTwitter />, link: "https://x.com/OjasS89508", color: "#1DA1F2" }
                             ].map((s, i) => (
                                 <a
                                     key={i} href={s.link}
