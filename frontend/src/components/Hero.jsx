@@ -128,13 +128,15 @@ const Hero = () => {
 
                         <div style={{ marginTop: "4rem", display: "flex", gap: "2rem", fontSize: "1.5rem", color: "#fff" }}>
                             {[
-                                { icon: <FaGithub />, color: "#fff" },
-                                { icon: <FaLinkedin />, color: "#0077B5" },
-                                { icon: <FaTwitter />, color: "#1DA1F2" }
+                                { icon: <FaGithub />, color: "#fff", href: "https://github.com/prob-Code" },
+                                { icon: <FaLinkedin />, color: "#0077B5", href: "https://www.linkedin.com/in/ojas-satdeve-a424a6289/" },
+                                { icon: <FaTwitter />, color: "#1DA1F2", href: "https://x.com/OjasS89508" }
                             ].map((social, idx) => (
                                 <motion.a
                                     key={idx}
-                                    href="#"
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     whileHover={{ y: -5, color: social.color }}
                                     transition={{ type: "spring", stiffness: 300 }}
                                     style={{ color: "#888", transition: "color 0.3s" }}
