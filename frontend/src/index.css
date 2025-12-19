@@ -126,7 +126,71 @@ a {
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.glass-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(255, 255, 255, 0.3);
+/* Hero Section Responsive */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 80px;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+    gap: 4rem;
+    width: 100%;
+    /* Ensure it takes full width */
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: auto;
+        padding-top: 140px;
+        padding-bottom: 4rem;
+        align-items: flex-start;
+    }
+
+    .hero-container {
+        flex-direction: column-reverse;
+        /* Explicitly stack: Text bottom, Image top, or reverse of reverse? */
+        /* original was wrap-reverse. If elements are [Text, Image]. wrap-reverse puts Image on line 1, Text on line 2 (bottom). 
+           We actually probably want Image Top, Text Bottom on mobile?
+           Or Text Top, Image Bottom?
+           Standard Portfolio: Text Top, Image Bottom.
+           Let's use flex-direction: column.
+           React default order is Text then Image.
+           column -> Text Top, Image Bottom.
+        */
+        flex-direction: column;
+        gap: 3rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    /* Center align the text content on mobile */
+    .hero-text-content {
+        align-items: center !important;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero-text-content h1,
+    .hero-text-content h2,
+    .hero-text-content p {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .hero-text-content .social-links {
+        justify-content: center;
+    }
+
+    .hero-text-content .cta-buttons {
+        justify-content: center;
+    }
 }

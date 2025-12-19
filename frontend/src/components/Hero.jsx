@@ -5,14 +5,7 @@ import avatar from "../assets/avatar.png";
 
 const Hero = () => {
     return (
-        <section style={{
-            minHeight: "100vh",
-            display: "flex",
-            alignItems: "center",
-            position: "relative",
-            overflow: "hidden",
-            paddingTop: "80px" // Offset for fixed navbar
-        }}>
+        <section className="hero-section">
             {/* Background Animated Gradient */}
             <motion.div
                 animate={{
@@ -58,16 +51,10 @@ const Hero = () => {
                 }}
             />
 
-            <div className="container" style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                flexWrap: "wrap-reverse",
-                gap: "4rem"
-            }}>
+            <div className="container hero-container">
 
                 {/* Left Side: Text */}
-                <div style={{ flex: "1", minWidth: "300px" }}>
+                <div className="hero-text-content" style={{ flex: "1", minWidth: "300px" }}>
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -107,7 +94,7 @@ const Hero = () => {
                             Specialized in the MERN stack and Machine Learning integrations.
                         </p>
 
-                        <div style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
+                        <div className="cta-buttons" style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>
                             <Link to="/projects" className="btn-primary">View Projects</Link>
                             <Link to="/contact" style={{
                                 fontWeight: "600",
@@ -126,7 +113,7 @@ const Hero = () => {
                             </Link>
                         </div>
 
-                        <div style={{ marginTop: "4rem", display: "flex", gap: "2rem", fontSize: "1.5rem", color: "#fff" }}>
+                        <div className="social-links" style={{ marginTop: "4rem", display: "flex", gap: "2rem", fontSize: "1.5rem", color: "#fff" }}>
                             {[
                                 { icon: <FaGithub />, color: "#fff", href: "https://github.com/prob-Code" },
                                 { icon: <FaLinkedin />, color: "#0077B5", href: "https://www.linkedin.com/in/ojas-satdeve-a424a6289/" },
