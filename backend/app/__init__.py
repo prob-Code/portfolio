@@ -37,5 +37,8 @@ def create_app():
 
     with app.app_context():
         db.create_all()
+        # Seed data if empty
+        from app.seeder import seed_database
+        seed_database()
 
     return app
