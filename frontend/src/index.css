@@ -65,6 +65,12 @@ a {
     padding: 0 24px;
 }
 
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+}
+
 /* Utilities */
 .gradient-text {
     background: var(--accent-gradient);
@@ -96,6 +102,18 @@ a {
     font-weight: 800;
     margin-bottom: 3rem;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
 }
 
 /* Glass Card */

@@ -75,7 +75,9 @@ const Navbar = () => {
                 backdropFilter: "blur(12px)",
                 border: "1px solid rgba(255,255,255,0.08)",
                 borderRadius: "50px",
-                boxShadow: "0 10px 30px rgba(0,0,0,0.3)"
+                boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+                maxWidth: "90vw",
+                overflowX: "auto"
             }}>
                 <Link
                     to="/"
