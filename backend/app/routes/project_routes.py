@@ -19,7 +19,7 @@ def get_projects():
             "live_link": p.live_link
         })
 
-    return jsonify(data)
+    return jsonify(data), 200, {'Cache-Control': 'public, max-age=3600'}
 
 @project_bp.route("/", methods=["POST"])
 def add_project():

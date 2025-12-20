@@ -45,7 +45,12 @@ const Blog = () => {
         return Math.floor(Math.random() * 5) + 3;
     };
 
-    if (loading) return <div className="container" style={{ paddingTop: "150px", color: "#fff", textAlign: "center" }}>Loading insights...</div>;
+    if (loading) return (
+        <div className="container" style={{ paddingTop: "150px", minHeight: "100vh", display: "flex", justifyContent: "center" }}>
+            <div style={{ width: "40px", height: "40px", border: "3px solid rgba(255,255,255,0.1)", borderTopColor: "#FF0080", borderRadius: "50%", animation: "spin 1s linear infinite" }}></div>
+            <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+        </div>
+    );
 
     return (
         <div className="container" style={{ paddingTop: "120px", paddingBottom: "80px", minHeight: "100vh" }}>

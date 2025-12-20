@@ -17,7 +17,7 @@ def get_posts():
             "tags": p.tags,
             "created_at": p.created_at.isoformat()
         })
-    return jsonify(data)
+    return jsonify(data), 200, {'Cache-Control': 'public, max-age=3600'}
 
 @blog_bp.route("/<slug>", methods=["GET"])
 def get_post(slug):
@@ -30,7 +30,7 @@ def get_post(slug):
         "content": post.content,
         "tags": post.tags,
         "created_at": post.created_at.isoformat()
-    })
+    }), 200, {'Cache-Control': 'public, max-age=3600'}
 
 @blog_bp.route("/", methods=["POST"])
 def create_post():
