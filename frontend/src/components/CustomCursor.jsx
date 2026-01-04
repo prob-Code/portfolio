@@ -1,111 +1,106 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 const CustomCursor = () => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const cursorX = useMotionValue(-100);
+    const cursorY = useMotionValue(-100);
+
+    const springConfig = { damping: 25, stiffness: 400, mass: 0.5 };
+    const springX = useSpring(cursorX, springConfig);
+    const springY = useSpring(cursorY, springConfig);
+
     const [isHovered, setIsHovered] = useState(false);
     const [isHidden, setIsHidden] = useState(false);
 
     useEffect(() => {
-        const updateMousePosition = (e) => {
-            setMousePosition({ x: e.clientX, y: e.clientY });
+        const moveCursor = (e) => {
+            cursorX.set(e.clientX);
+            cursorY.set(e.clientY);
         };
 
-        const onMouseEnter = () => setIsHidden(false);
-        const onMouseLeave = () => setIsHidden(true);
+        const handleMouseEnter = () => setIsHidden(false);
+        const handleMouseLeave = () => setIsHidden(true);
 
-        document.addEventListener("mousemove", updateMousePosition);
-        document.addEventListener("mouseenter", onMouseEnter);
-        document.addEventListener("mouseleave", onMouseLeave);
-
-        // Add hover listeners to clickable elements
-        const handleLinkHoverEvents = () => {
-            const linkHoverStart = () => setIsHovered(true);
-            const linkHoverEnd = () => setIsHovered(false);
-
-            document.querySelectorAll("a, button, .clickable").forEach((el) => {
-                el.addEventListener("mouseenter", linkHoverStart);
-                el.addEventListener("mouseleave", linkHoverEnd);
-            });
-
-            // Cleanup function for these specific listeners would be complex dynamically, 
-            // so we rely on the MutationObserver approach or just global event delegation below.
-        };
-
-        // Better approach: Global delegation for hover detection
         const handleMouseOver = (e) => {
-            if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
+            if (
+                e.target.tagName === "A" ||
+                e.target.tagName === "BUTTON" ||
+                e.target.closest("a") ||
+                e.target.closest("button") ||
+                e.target.classList.contains("clickable")
+            ) {
                 setIsHovered(true);
             } else {
                 setIsHovered(false);
             }
         };
 
+        window.addEventListener("mousemove", moveCursor);
+        document.addEventListener("mouseenter", handleMouseEnter);
+        document.addEventListener("mouseleave", handleMouseLeave);
         document.addEventListener("mouseover", handleMouseOver);
 
         return () => {
-            document.removeEventListener("mousemove", updateMousePosition);
-            document.removeEventListener("mouseenter", onMouseEnter);
-            document.removeEventListener("mouseleave", onMouseLeave);
+            window.removeEventListener("mousemove", moveCursor);
+            document.removeEventListener("mouseenter", handleMouseEnter);
+            document.removeEventListener("mouseleave", handleMouseLeave);
             document.removeEventListener("mouseover", handleMouseOver);
         };
-    }, []);
+    }, [cursorX, cursorY]);
 
+    // We only animate the scale/size via variants, typically much cheaper than position
     const variants = {
         default: {
-            x: mousePosition.x - 16,
-            y: mousePosition.y - 16,
             height: 32,
             width: 32,
             backgroundColor: "transparent",
             border: "2px solid #FF0080",
-            transition: {
-                type: "spring",
-                mass: 0.6
-            }
         },
         hover: {
-            x: mousePosition.x - 32,
-            y: mousePosition.y - 32,
             height: 64,
             width: 64,
             backgroundColor: "rgba(255, 0, 128, 0.2)",
             border: "2px solid #7928CA",
-            transition: {
-                type: "spring",
-                mass: 0.6
-            }
-        }
+        },
     };
 
     if (isHidden) return null;
 
     return (
-        <motion.div
-            style={{
-                position: "fixed",
-                top: 0,
-                left: 0,
-                zIndex: 9999,
-                borderRadius: "50%",
-                pointerEvents: "none",
-                mixBlendMode: "screen"
-            }}
-            variants={variants}
-            animate={isHovered ? "hover" : "default"}
-        >
-            {/* Center dot */}
-            <div style={{
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                width: "4px",
-                height: "4px",
-                backgroundColor: "#fff",
-                borderRadius: "50%"
-            }} />
-        </motion.div>
+        <>
+            <motion.div
+                style={{
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    x: springX,
+                    y: springY,
+                    translateX: "-50%",
+                    translateY: "-50%",
+                    zIndex: 9999,
+                    borderRadius: "50%",
+                    pointerEvents: "none",
+                    mixBlendMode: "screen",
+                }}
+                variants={variants}
+                animate={isHovered ? "hover" : "default"}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            >
+                {/* Center dot remains static relative to the ring */}
+                <div
+                    style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        width: "4px",
+                        height: "4px",
+                        backgroundColor: "#fff",
+                        borderRadius: "50%",
+                    }}
+                />
+            </motion.div>
+        </>
     );
 };
 

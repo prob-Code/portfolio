@@ -120,10 +120,12 @@ a {
 .glass-card {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
     border-radius: 16px;
     padding: 2rem;
     transition: transform 0.3s ease, border-color 0.3s ease;
+    will-change: transform;
 }
 
 /* Hero Section Responsive */
@@ -192,5 +194,118 @@ a {
 
     .hero-text-content .cta-buttons {
         justify-content: center;
+    }
+}
+
+/* About Section */
+.about-section {
+    padding: 4rem 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
+}
+
+/* Velocity Scroll Section */
+.velocity-scroll-section {
+    padding: 4rem 0;
+    background: transparent;
+    overflow: hidden;
+}
+
+/* Expertise Section */
+.expertise-section {
+    padding: 4rem 20px;
+}
+
+/* Mobile adjustments for new sections */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 2rem 16px !important;
+        gap: 2rem !important;
+        flex-direction: column;
+        text-align: center;
+        /* efficient for mobile */
+    }
+
+    .velocity-scroll-section {
+        padding: 2rem 0 !important;
+    }
+
+    .expertise-section {
+        padding: 2rem 16px !important;
+    }
+
+    /* Ensure parallax text alignment is centered on mobile if needed */
+    .about-section p {
+        text-align: left;
+        /* Keep left align for readability, or justify */
+    }
+
+    .about-section h2 {
+        text-align: center !important;
+    }
+}
+
+/* Page Standard Container (Projects, Contact) */
+.page-container {
+    padding-top: 120px;
+    padding-bottom: 80px;
+    min-height: 100vh;
+}
+
+/* Projects Page */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2.5rem;
+}
+
+/* Contact Page */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-info-side {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-form-card {
+    flex: 1.5;
+    min-width: 350px;
+    padding: 3rem;
+}
+
+/* Mobile Adjustments for Pages */
+@media (max-width: 768px) {
+    .page-container {
+        padding-top: 100px;
+        padding-bottom: 4rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+        gap: 1.5rem !important;
+    }
+
+    .contact-container {
+        gap: 2rem !important;
+        flex-direction: column;
+    }
+
+    .contact-form-card {
+        min-width: 100% !important;
+        /* Fix overflow */
+        padding: 1.5rem !important;
+        width: 100%;
+    }
+
+    .contact-info-side {
+        min-width: 100% !important;
     }
 }

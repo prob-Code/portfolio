@@ -24,11 +24,7 @@ function Contact() {
     };
 
     return (
-        <div className="container" style={{
-            paddingTop: "120px",
-            paddingBottom: "80px",
-            minHeight: "100vh",
-        }}>
+        <div className="container page-container">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -40,14 +36,14 @@ function Contact() {
                 </p>
             </motion.div>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "4rem", maxWidth: "1000px", margin: "0 auto" }}>
+            <div className="contact-container">
 
                 {/* Contact Info Side */}
                 <motion.div
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 }}
-                    style={{ flex: "1", minWidth: "300px" }}
+                    className="contact-info-side"
                 >
                     <div style={{ marginBottom: "3rem" }}>
                         <h3 style={{ fontSize: "1.5rem", marginBottom: "1.5rem", display: "flex", alignItems: "center", gap: "10px" }}>
@@ -100,8 +96,8 @@ function Contact() {
                     initial={{ opacity: 0, x: 30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="glass-card"
-                    style={{ flex: "1.5", minWidth: "350px", padding: "3rem" }}
+                    transition={{ delay: 0.4 }}
+                    className="glass-card contact-form-card"
                 >
                     <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
                         <div style={{ display: "flex", gap: "1.5rem" }}>

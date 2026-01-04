@@ -29,6 +29,13 @@ def seed_database():
                 "tech_stack": "React, Tailwind CSS, Framer Motion",
                 "github_link": "https://github.com/username/portfolio",
                 "live_link": "https://my-portfolio.com"
+            },
+            {
+                "title": "Kwarcs.in",
+                "description": "Contributed to the development and enhancement of the Kwarcs.in platform.",
+                "tech_stack": "Web Development, Team Contribution",
+                "github_link": "#",
+                "live_link": "https://kwarcs.in"
             }
         ]
         

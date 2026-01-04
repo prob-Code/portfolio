@@ -58,7 +58,7 @@ const Home = () => {
             <Hero />
 
             {/* About / Personal Photo Section */}
-            <section className="container" style={{ padding: "4rem 20px", display: "flex", flexWrap: "wrap", alignItems: "center", gap: "3rem" }}>
+            <section className="container about-section">
                 <div style={{ flex: 1, minWidth: "300px" }}>
                     <ParallaxText offset={30}>
                         <h2 className="section-title" style={{ textAlign: "left", marginBottom: "1.5rem" }}>About <span className="gradient-text">Me</span></h2>
@@ -73,7 +73,7 @@ const Home = () => {
 
                     <ParallaxText offset={-10}>
                         <p style={{ fontSize: "1.1rem", color: "#a3a3a3", lineHeight: "1.8" }}>
-                            Fast-forward to today, and I've had the privilege of working on various projects, from <strong>AI-driven applications</strong> to <strong>immersive web experiences</strong>.
+                            Fast-forward to today, and I've had the privilege of working on various projects, from <strong>AI-driven applications</strong> to contributions for platforms like <a href="https://kwarcs.in" target="_blank" rel="noopener noreferrer" style={{ color: "#FF0080", textDecoration: "none" }}>Kwarcs.in</a>.
                             My main focus these days is building accessible, inclusive products and digital experiences for a variety of clients.
                         </p>
                     </ParallaxText>
@@ -114,13 +114,13 @@ const Home = () => {
             <TechPlayground />
 
             {/* Velocity Scroll Text */}
-            <div style={{ padding: "4rem 0", background: "transparent", overflow: "hidden" }}>
+            <div className="velocity-scroll-section">
                 <VelocityScroll baseVelocity={-0.5}>SELECTED WORKS WEB DEVELOPMENT AI SOLUTIONS</VelocityScroll>
                 <div style={{ height: "20px" }}></div>
                 <VelocityScroll baseVelocity={0.5}>CREATIVE CODING INTERACTIVE DESIGN FULL STACK</VelocityScroll>
             </div>
 
-            <section className="container" style={{ padding: "4rem 20px" }}>
+            <section className="container expertise-section">
                 <h2 className="section-title">My Expertise</h2>
                 <div style={{
                     display: "grid",

@@ -43,7 +43,7 @@ function Projects() {
     }, [activeCategory, projects]);
 
     return (
-        <div className="container" style={{ paddingTop: "120px", paddingBottom: "80px", minHeight: "100vh" }}>
+        <div className="container page-container">
             <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -92,11 +92,7 @@ function Projects() {
             ) : (
                 <motion.div
                     layout
-                    style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
-                        gap: "2.5rem"
-                    }}
+                    className="projects-grid"
                 >
                     <AnimatePresence>
                         {filteredProjects.map((p) => (
